@@ -1,0 +1,90 @@
+<style>
+  .form-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-container h2 {
+    color: #d9534f;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .form-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .form-container li {
+    color: red;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .submit-button {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .submit-button:hover {
+    background: #0056b3;
+  }
+</style>
+
+<div class="form-container">
+  <%= form_with(model: user) do |form| %>
+    <% if user.errors.any? %>
+      <div>
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email %>
+    </div>
+
+    <div>
+      <%= form.submit "Save User", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>

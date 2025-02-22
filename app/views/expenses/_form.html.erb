@@ -1,0 +1,104 @@
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .form-container {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+  }
+
+  .form-container h2 {
+    text-align: center;
+    color: #dc3545;
+  }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+    background: #ffe6e6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .submit-button {
+    display: block;
+    width: 100%;
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .submit-button:hover {
+    background: #0056b3;
+  }
+</style>
+
+<div class="form-container">
+  <% if expense.errors.any? %>
+    <div class="error-message">
+      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+      <ul>
+        <% expense.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with(model: expense) do |form| %>
+    <div>
+      <%= form.label :user_id %>
+      <%= form.text_field :user_id %>
+    </div>
+
+    <div>
+      <%= form.label :amount %>
+      <%= form.text_field :amount %>
+    </div>
+
+    <div>
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </div>
+
+    <div>
+      <%= form.label :date %>
+      <%= form.date_field :date %>
+    </div>
+
+    <div>
+      <%= form.submit "Save Expense", class: "submit-button" %>
+    </div>
+  <% end %>
+</div>

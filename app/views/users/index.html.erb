@@ -1,0 +1,91 @@
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+
+  #users {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .user-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .user-card:hover {
+    transform: scale(1.03);
+  }
+
+  .user-card p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+
+  .link-button {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+
+  .link-button:hover {
+    background: #0056b3;
+  }
+
+  .new-user-btn {
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+  }
+
+  .new-user-btn:hover {
+    background: #218838;
+  }
+</style>
+
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Users" %>
+
+<h1>Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <div class="user-card">
+      <%= render user %>
+      <p>
+        <%= link_to "Show this user", user, class: "link-button" %>
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New User", new_user_path, class: "new-user-btn" %>

@@ -1,0 +1,62 @@
+<style>
+  .notice {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .user-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .user-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .user-actions a, .user-actions form button {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .user-actions a:hover, .user-actions form button:hover {
+    background: #0056b3;
+  }
+
+  .no-expenses {
+    color: #888;
+    font-style: italic;
+    margin-top: 10px;
+  }
+</style>
+
+<div class="user-container">
+  <p class="notice"><%= notice %></p>
+
+  <%= render @user %>
+
+  <div class="user-actions">
+    <%= link_to "Edit this User", edit_user_path(@user) %>
+    <%= link_to "Back to Users", users_path %>
+
+    <%= button_to "Destroy this User", @user, method: :delete, data: { confirm: "Are you sure?" } %>
+
+    <% if @user.expenses.any? %>
+      <%= link_to "See Expenses", expenses_path(@user), class: "button" %>
+    <% else %>
+      <p class="no-expenses">No expenses available</p>
+    <% end %>
+  </div>
+</div>

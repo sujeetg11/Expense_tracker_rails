@@ -1,0 +1,108 @@
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .notice {
+    color: green;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .expense-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .expense-container h2 {
+    color: #dc3545;
+    margin-bottom: 10px;
+  }
+
+  .expense-container p {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  .action-links {
+    margin-top: 20px;
+  }
+
+  .action-links a,
+  .action-links form {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .action-button {
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+
+  .action-button:hover {
+    background: #0056b3;
+  }
+
+  .delete-button {
+    padding: 10px 15px;
+    background: #dc3545;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .delete-button:hover {
+    background: #a71d2a;
+  }
+</style>
+
+<p class="notice"><%= notice %></p>
+
+<div class="expense-container">
+  <h2>Expense Details</h2>
+  <%= render @expense %>
+
+  <div class="action-links">
+    <%= link_to "Edit this expense", edit_expense_path(@expense), class: "action-button" %>
+    <%= link_to "Back to expenses", expenses_path, class: "action-button" %>
+
+    <%= button_to "Destroy this expense", @expense, method: :delete, class: "delete-button" %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+# <p style="color: green"><%= notice %></p>
+
+# <%= render @expense %>
+
+# <div>
+#   <%= link_to "Edit this expense", edit_expense_path(@expense) %> |
+#   <%= link_to "Back to expenses", expenses_path %>
+
+#   <%= button_to "Destroy this expense", @expense, method: :delete %>
+# </div>
