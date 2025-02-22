@@ -54,7 +54,7 @@
     <%= button_to "Destroy this User", @user, method: :delete, data: { confirm: "Are you sure?" } %>
 
     <% if @user.expenses.any? %>
-      <%= link_to "See Expenses", expenses_path(@user), class: "button" %>
+      <%= link_to "See Expenses", expenses_path(user_id: @user.id), class: "button" %>
     <% else %>
       <p class="no-expenses">No expenses available</p>
     <% end %>

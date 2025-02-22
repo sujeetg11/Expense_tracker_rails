@@ -24,7 +24,7 @@
     font-weight: bold;
   }
 
-  #expenses {
+  expenses {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
@@ -91,7 +91,7 @@
 <% total_purchase = @expenses.sum(:amount) %>
 
 <div class="total-purchase">
-  Total Purchase: $<%= total_purchase %>
+  Total Purchase: Rs <%= total_purchase %>
 </div>
 
 <div id="expenses">
@@ -106,14 +106,3 @@
 </div>
 
 <%= link_to "New Expense", new_expense_path, class: "new-expense-btn" %>
-
-
-
-
-
-
-
-
-
-
-
