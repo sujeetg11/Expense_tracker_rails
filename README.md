@@ -6,8 +6,8 @@ This project is a Ruby on Rails application designed to track the expense of man
 ## Prerequisites
 Before running this application, ensure you have the following dependencies installed on your system:
 
-- **Ruby**: 7.2.2.1
-- **Rails**: Installed along with Ruby
+- **Ruby**: 3.2
+- **Rails**: v~ 7.2.2.1 Installed along with Ruby
 - **Git**: For version control
 - **SQLite3**: Database engine used for development
 
